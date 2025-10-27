@@ -2,7 +2,7 @@
 
 Proof-of-concept: AI-assisted executor for **digital assets** (bank + crypto), local demo only (mock APIs).
 
-**YamaSutra** - An elegant AI-powered digital will executor with a beautiful, intuitive interface.
+**YamaSutra** - An  AI-powered digital will executor with divine powers
 
 ## Run locally
 
