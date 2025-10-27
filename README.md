@@ -27,17 +27,7 @@ Open http://127.0.0.1:5001 in your browser to access the YamaSutra UI
 
 ## Features
 
-### Beautiful Web Interface
-- **YamaSutra UI**: Elegant, Apple-inspired interface with gradient design
-- **Step-by-step workflow**: Guided process for will execution
-- **Real-time updates**: Live proposal and audit log display
-- **Responsive design**: Works on desktop and mobile devices
 
-### Workflow
-1. **Upload Will**: Process structured will JSON
-2. **Review Proposals**: View AI-generated action proposals
-3. **Execute & Audit**: Approve proposals and track execution
-4. **Audit Trail**: Complete log of all actions and results
 
 ## API Endpoints
 
