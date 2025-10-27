@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YamaSutra - Digital Will Executor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 2rem 0;
+        }
+
+        .workflow-steps {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .step.active {
+            border: 2px solid #667eea;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .step-content {
+            margin-top: 1rem;
+            color: #6e6e73;
+        }
+
+        .will-preview {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .proposals-list {
+            margin-top: 1rem;
+        }
+
+        .proposal {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.2s ease;
+        }
+
+        .proposal:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .proposal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .asset-type {
+            font-weight: 600;
+            color: #667eea;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status.proposed {
+            background: #ffd60a;
+            color: #000;
+        }
+
+        .status.executed {
+            background: #30d158;
+            color: white;
+        }
+
+        .beneficiary {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #6e6e73;
+        }
+
+        .suggested-action {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #1d1d1f;
+            font-style: italic;
+        }
+
+        .audit-log {
+            background: #1d1d1f;
+            color: #f5f5f7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.85rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+
+        .audit-entry {
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .audit-entry:hover {
+            opacity: 1;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        button.secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        button.secondary:hover {
+            background: #f5f5f7;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-message {
+            background: #30d158;
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6e6e73;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+            
+            .step {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YamaSutra</h1>
+            <p class="subtitle">AI-Powered Digital Will Executor</p>
+        </header>
+
+        <div class="main-content">
+            <div class="step active fade-in" id="step1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Upload Will Document</div>
+                </div>
+                <div class="step-content">
+                    <p>AI analyzes structured will data and extracts bequests for digital assets.</p>
+                    <button onclick="processWill()" id="processBtn">
+                        Process Sample Will
+                    </button>
+                    <div id="willPreview" style="display:none; margin-top: 1rem;">
+                        <div class="will-preview" id="willContent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Review Proposals</div>
+                </div>
+                <div class="step-content">
+                    <p>Generated action proposals based on will provisions.</p>
+                    <div id="proposalsList" class="proposals-list"></div>
+                    <button class="secondary" onclick="loadProposals()" id="loadProposalsBtn" style="display:none;">
+                        Load Proposals
+                    </button>
+                </div>
+            </div>
+
+            <div class="step" id="step3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Execute & Audit</div>
+                </div>
+                <div class="step-content">
+                    <p>Approve proposals to execute transfers and log actions.</p>
+                    <div id="auditDisplay" class="audit-log" style="display:none;"></div>
+                    <button class="secondary" onclick="loadAuditLog()" id="auditBtn" style="display:none;">
+                        View Audit Log
+                    </button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="secondary" onclick="resetDemo()">Reset Demo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:5001';
+        let currentProposals = [];
+
+        async function processWill() {
+            const btn = document.getElementById('processBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> Processing...';
+
+            try {
+                const will = {
+                    "testator": {"name":"John Doe","dob":"1975-04-01","id":"JD19750401"},
+                    "date":"2025-10-24",
+                    "executor":{"name":"Acme Fiduciary LLC","type":"corporate","contact":"contact@acmefid.com"},
+                    "bequests":[
+                        {
+                            "id":"b1",
+                            "type":"bank_account",
+                            "target":{"bank":"Sandbox Bank","account_id":"SB-000123"},
+                            "beneficiary":{"name":"Alice Doe","relation":"daughter","contact":"alice@example.com"},
+                            "conditions":["death_confirmed"],
+                            "notes":"Transfer 50% of checking balance"
+                        },
+                        {
+                            "id":"b2",
+                            "type":"crypto_wallet",
+                            "target":{"chain":"ethereum","address":"0xabc123testaddress"},
+                            "beneficiary":{"name":"Bob Doe","relation":"son","contact":"bob@example.com"},
+                            "conditions":["death_confirmed"],
+                            "notes":"Transfer all ETH holdings"
+                        },
+                        {
+                            "id":"b3",
+                            "type":"online_account",
+                            "target":{"service":"example-mail","account_id":"john.doe@example.com"},
+                            "beneficiary":{"name":"Executor","relation":"executor","contact":"contact@acmefid.com"},
+                            "conditions":["death_confirmed"],
+                            "notes":"Archive emails, then close account per instructions"
+                        }
+                    ],
+                    "instructions":"Pay outstanding debts of digital services from estate; preserve photos for 2 years."
+                };
+
+                const response = await fetch(`${API_BASE}/process_will`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(will)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('willPreview').style.display = 'block';
+                    document.getElementById('willContent').textContent = JSON.stringify(will, null, 2);
+                    
+                    setTimeout(() => {
+                        document.getElementById('step1').classList.remove('active');
+                        document.getElementById('step2').classList.add('active');
+                        loadProposals();
+                    }, 1500);
+                }
+
+                btn.disabled = false;
+                btn.innerHTML = '✓ Processed Successfully';
+            } catch (error) {
+                alert('Failed to process will. Make sure the server is running.');
+                btn.disabled = false;
+                btn.innerHTML = 'Process Sample Will';
+            }
+        }
+
+        async function loadProposals() {
+            try {
+                const response = await fetch(`${API_BASE}/proposals`);
+                const data = await response.json();
+                currentProposals = data.proposals;
+
+                const list = document.getElementById('proposalsList');
+                list.innerHTML = '';
+
+                const proposed = data.proposals.filter(p => p.status === 'proposed');
+                
+                if (proposed.length === 0) {
+                    list.innerHTML = '<p style="color: #6e6e73;">No pending proposals.</p>';
+                    return;
+                }
+
+                proposed.forEach(proposal => {
+                    const div = document.createElement('div');
+                    div.className = 'proposal fade-in';
+                    div.innerHTML = `
+                        <div class="proposal-header">
+                            <span class="asset-type">${proposal.asset_type.replace('_', ' ')}</span>
+                            <span class="status proposed">${proposal.status}</span>
+                        </div>
+                        <div class="beneficiary">
+                            <strong>Beneficiary:</strong> ${proposal.beneficiary.name} (${proposal.beneficiary.relation})
+                        </div>
+                        <div class="suggested-action">${proposal.suggested_action}</div>
+                        <button style="margin-top: 1rem; width: 100%;" onclick="approveProposal('${proposal.proposal_id}')">
+                            Approve & Execute
+                        </button>
+                    `;
+                    list.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Failed to load proposals:', error);
+            }
+        }
+
+        async function approveProposal(proposalId) {
+            try {
+                const response = await fetch(`${API_BASE}/approve_action`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        proposal_id: proposalId,
+                        approver: 'YamaSutra AI'
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('step2').classList.remove('active');
+                    document.getElementById('step3').classList.add('active');
+                    loadAuditLog();
+                }
+            } catch (error) {
+                console.error('Failed to approve proposal:', error);
+            }
+        }
+
+        async function loadAuditLog() {
+            try {
+                const response = await fetch(`${API_BASE}/audit_log`);
+                const data = await response.json();
+                
+                const display = document.getElementById('auditDisplay');
+                display.style.display = 'block';
+                
+                const recent = data.audit.slice(-5);
+                display.innerHTML = recent.map(entry => {
+                    const event = entry.payload.event;
+                    const time = new Date(entry.timestamp * 1000).toLocaleTimeString();
+                    return `<div class="audit-entry">[${time}] ${event}: ${entry.payload.proposal_id || 'N/A'}</div>`;
+                }).join('');
+            } catch (error) {
+                console.error('Failed to load audit log:', error);
+            }
+        }
+
+        function resetDemo() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

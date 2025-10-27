@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DigitalWill",
+  "type": "object",
+  "required": ["testator","date","executor","bequests"],
+  "properties": {
+    "testator": {
+      "type": "object",
+      "properties": {
+        "name": {"type":"string"},
+        "dob": {"type":"string","format":"date"},
+        "id": {"type":"string"}
+      }
+    },
+    "date": {"type":"string","format":"date"},
+    "executor": {
+      "type":"object",
+      "properties": {
+        "name": {"type":"string"},
+        "type": {"type":"string","enum":["human","corporate"]},
+        "contact": {"type":"string"}
+      }
+    },
+    "bequests": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "required":["id","type","target","beneficiary"],
+        "properties": {
+          "id": {"type":"string"},
+          "type": {"type":"string","enum":["bank_account","crypto_wallet","online_account","residuary"]},
+          "target": {"type":"object"},
+          "beneficiary": {
+            "type":"object",
+            "properties": {
+              "name": {"type":"string"},
+              "relation": {"type":"string"},
+              "contact": {"type":"string"}
+            }
+          },
+          "conditions": {"type":"array","items":{"type":"string"}},
+          "notes": {"type":"string"}
+        }
+      }
+    },
+    "instructions": {"type":"string"}
+  }
+}

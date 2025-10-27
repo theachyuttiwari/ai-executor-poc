@@ -1,0 +1,403 @@
+[
+  {
+    "asset_type": "bank_account",
+    "bequest_id": "b1",
+    "target": {
+      "bank": "Sandbox Bank",
+      "account_id": "SB-000123"
+    },
+    "beneficiary": {
+      "name": "Alice Doe",
+      "relation": "daughter",
+      "contact": "alice@example.com"
+    },
+    "notes": "Transfer 50% of checking balance",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:47:43.537780Z",
+    "suggested_action": "Transfer funds per instruction (Transfer 50% of checking balance) to Alice Doe",
+    "proposal_id": "p-5c14ef56",
+    "status": "executed",
+    "executed_by": "Acme Executor",
+    "execution_result": {
+      "success": true,
+      "detail": {
+        "tx_id": "BANK-TX-7ce06c4343",
+        "bank": "Sandbox Bank",
+        "account_id": "SB-000123",
+        "amount_desc": "Transfer 50% of checking balance",
+        "timestamp": 1761562068.2152371
+      }
+    }
+  },
+  {
+    "asset_type": "crypto_wallet",
+    "bequest_id": "b2",
+    "target": {
+      "chain": "ethereum",
+      "address": "0xabc123testaddress"
+    },
+    "beneficiary": {
+      "name": "Bob Doe",
+      "relation": "son",
+      "contact": "bob@example.com"
+    },
+    "notes": "Transfer all ETH holdings",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:47:43.537787Z",
+    "suggested_action": "Send crypto holdings from 0xabc123testaddress to beneficiary Bob Doe",
+    "proposal_id": "p-412b21bc",
+    "status": "executed",
+    "executed_by": "Acme Executor",
+    "execution_result": {
+      "success": true,
+      "detail": {
+        "tx_hash": "0x8d7d5ce898244788bdf974a26bd2b13c8d7d5ce898244788bdf974a26bd2b13c",
+        "chain": "ethereum",
+        "from_address": "0xabc123testaddress",
+        "to_beneficiary": "Bob Doe",
+        "notes": "Transfer all ETH holdings",
+        "timestamp": 1761562240.5108428
+      }
+    }
+  },
+  {
+    "asset_type": "online_account",
+    "bequest_id": "b3",
+    "target": {
+      "service": "example-mail",
+      "account_id": "john.doe@example.com"
+    },
+    "beneficiary": {
+      "name": "Executor",
+      "relation": "executor",
+      "contact": "contact@acmefid.com"
+    },
+    "notes": "Archive emails, then close account per instructions",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:47:43.537788Z",
+    "suggested_action": "Archive and then close example-mail account john.doe@example.com",
+    "proposal_id": "p-ceffa549",
+    "status": "executed",
+    "executed_by": "YamaSutra AI",
+    "execution_result": {
+      "success": true,
+      "detail": "account archived and closure request submitted"
+    }
+  },
+  {
+    "asset_type": "bank_account",
+    "bequest_id": "b1",
+    "target": {
+      "bank": "Sandbox Bank",
+      "account_id": "SB-000123"
+    },
+    "beneficiary": {
+      "name": "Alice Doe",
+      "relation": "daughter",
+      "contact": "alice@example.com"
+    },
+    "notes": "Transfer 50% of checking balance",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:50:34.633130Z",
+    "suggested_action": "Transfer funds per instruction (Transfer 50% of checking balance) to Alice Doe",
+    "proposal_id": "p-6ffad5de",
+    "status": "executed",
+    "executed_by": "YamaSutra AI",
+    "execution_result": {
+      "success": true,
+      "detail": {
+        "tx_id": "BANK-TX-178b917813",
+        "bank": "Sandbox Bank",
+        "account_id": "SB-000123",
+        "amount_desc": "Transfer 50% of checking balance",
+        "timestamp": 1761562659.525824
+      }
+    }
+  },
+  {
+    "asset_type": "crypto_wallet",
+    "bequest_id": "b2",
+    "target": {
+      "chain": "ethereum",
+      "address": "0xabc123testaddress"
+    },
+    "beneficiary": {
+      "name": "Bob Doe",
+      "relation": "son",
+      "contact": "bob@example.com"
+    },
+    "notes": "Transfer all ETH holdings",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:50:34.633141Z",
+    "suggested_action": "Send crypto holdings from 0xabc123testaddress to beneficiary Bob Doe",
+    "proposal_id": "p-45fe8b81",
+    "status": "executed",
+    "executed_by": "YamaSutra AI",
+    "execution_result": {
+      "success": true,
+      "detail": {
+        "tx_hash": "0x010f388df103427db413e8928d3e11b5010f388df103427db413e8928d3e11b5",
+        "chain": "ethereum",
+        "from_address": "0xabc123testaddress",
+        "to_beneficiary": "Bob Doe",
+        "notes": "Transfer all ETH holdings",
+        "timestamp": 1761562691.51425
+      }
+    }
+  },
+  {
+    "asset_type": "online_account",
+    "bequest_id": "b3",
+    "target": {
+      "service": "example-mail",
+      "account_id": "john.doe@example.com"
+    },
+    "beneficiary": {
+      "name": "Executor",
+      "relation": "executor",
+      "contact": "contact@acmefid.com"
+    },
+    "notes": "Archive emails, then close account per instructions",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:50:34.633143Z",
+    "suggested_action": "Archive and then close example-mail account john.doe@example.com",
+    "proposal_id": "p-434c8a4d",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "bank_account",
+    "bequest_id": "b1",
+    "target": {
+      "bank": "Sandbox Bank",
+      "account_id": "SB-000123"
+    },
+    "beneficiary": {
+      "name": "Alice Doe",
+      "relation": "daughter",
+      "contact": "alice@example.com"
+    },
+    "notes": "Transfer 50% of checking balance",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:57:29.153720Z",
+    "suggested_action": "Transfer funds per instruction (Transfer 50% of checking balance) to Alice Doe",
+    "proposal_id": "p-8c83a5f0",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "crypto_wallet",
+    "bequest_id": "b2",
+    "target": {
+      "chain": "ethereum",
+      "address": "0xabc123testaddress"
+    },
+    "beneficiary": {
+      "name": "Bob Doe",
+      "relation": "son",
+      "contact": "bob@example.com"
+    },
+    "notes": "Transfer all ETH holdings",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:57:29.153747Z",
+    "suggested_action": "Send crypto holdings from 0xabc123testaddress to beneficiary Bob Doe",
+    "proposal_id": "p-a7efb0d5",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "online_account",
+    "bequest_id": "b3",
+    "target": {
+      "service": "example-mail",
+      "account_id": "john.doe@example.com"
+    },
+    "beneficiary": {
+      "name": "Executor",
+      "relation": "executor",
+      "contact": "contact@acmefid.com"
+    },
+    "notes": "Archive emails, then close account per instructions",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:57:29.153755Z",
+    "suggested_action": "Archive and then close example-mail account john.doe@example.com",
+    "proposal_id": "p-1ac6eb4f",
+    "status": "executed",
+    "executed_by": "YamaSutra AI",
+    "execution_result": {
+      "success": true,
+      "detail": "account archived and closure request submitted"
+    }
+  },
+  {
+    "asset_type": "bank_account",
+    "bequest_id": "b1",
+    "target": {
+      "bank": "Sandbox Bank",
+      "account_id": "SB-000123"
+    },
+    "beneficiary": {
+      "name": "Alice Doe",
+      "relation": "daughter",
+      "contact": "alice@example.com"
+    },
+    "notes": "Transfer 50% of checking balance",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:58:06.925226Z",
+    "suggested_action": "Transfer funds per instruction (Transfer 50% of checking balance) to Alice Doe",
+    "proposal_id": "p-9e18e599",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "crypto_wallet",
+    "bequest_id": "b2",
+    "target": {
+      "chain": "ethereum",
+      "address": "0xabc123testaddress"
+    },
+    "beneficiary": {
+      "name": "Bob Doe",
+      "relation": "son",
+      "contact": "bob@example.com"
+    },
+    "notes": "Transfer all ETH holdings",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:58:06.925247Z",
+    "suggested_action": "Send crypto holdings from 0xabc123testaddress to beneficiary Bob Doe",
+    "proposal_id": "p-1eb2da7c",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "online_account",
+    "bequest_id": "b3",
+    "target": {
+      "service": "example-mail",
+      "account_id": "john.doe@example.com"
+    },
+    "beneficiary": {
+      "name": "Executor",
+      "relation": "executor",
+      "contact": "contact@acmefid.com"
+    },
+    "notes": "Archive emails, then close account per instructions",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:58:06.925252Z",
+    "suggested_action": "Archive and then close example-mail account john.doe@example.com",
+    "proposal_id": "p-7fb88d27",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "bank_account",
+    "bequest_id": "b1",
+    "target": {
+      "bank": "Sandbox Bank",
+      "account_id": "SB-000123"
+    },
+    "beneficiary": {
+      "name": "Alice Doe",
+      "relation": "daughter",
+      "contact": "alice@example.com"
+    },
+    "notes": "Transfer 50% of checking balance",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:58:07.675834Z",
+    "suggested_action": "Transfer funds per instruction (Transfer 50% of checking balance) to Alice Doe",
+    "proposal_id": "p-cc8884df",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "crypto_wallet",
+    "bequest_id": "b2",
+    "target": {
+      "chain": "ethereum",
+      "address": "0xabc123testaddress"
+    },
+    "beneficiary": {
+      "name": "Bob Doe",
+      "relation": "son",
+      "contact": "bob@example.com"
+    },
+    "notes": "Transfer all ETH holdings",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:58:07.675860Z",
+    "suggested_action": "Send crypto holdings from 0xabc123testaddress to beneficiary Bob Doe",
+    "proposal_id": "p-f93f129f",
+    "status": "proposed"
+  },
+  {
+    "asset_type": "online_account",
+    "bequest_id": "b3",
+    "target": {
+      "service": "example-mail",
+      "account_id": "john.doe@example.com"
+    },
+    "beneficiary": {
+      "name": "Executor",
+      "relation": "executor",
+      "contact": "contact@acmefid.com"
+    },
+    "notes": "Archive emails, then close account per instructions",
+    "conditions": [
+      "death_confirmed"
+    ],
+    "will_testator": "John Doe",
+    "will_date": "2025-10-24",
+    "created_at": "2025-10-27T10:58:07.675868Z",
+    "suggested_action": "Archive and then close example-mail account john.doe@example.com",
+    "proposal_id": "p-25d9371c",
+    "status": "proposed"
+  }
+]

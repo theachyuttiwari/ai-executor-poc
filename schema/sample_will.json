@@ -1,0 +1,32 @@
+{
+  "testator": {"name":"John Doe","dob":"1975-04-01","id":"JD19750401"},
+  "date":"2025-10-24",
+  "executor":{"name":"Acme Fiduciary LLC","type":"corporate","contact":"contact@acmefid.com"},
+  "bequests":[
+    {
+      "id":"b1",
+      "type":"bank_account",
+      "target":{"bank":"Sandbox Bank","account_id":"SB-000123"},
+      "beneficiary":{"name":"Alice Doe","relation":"daughter","contact":"alice@example.com"},
+      "conditions":["death_confirmed"],
+      "notes":"Transfer 50% of checking balance"
+    },
+    {
+      "id":"b2",
+      "type":"crypto_wallet",
+      "target":{"chain":"ethereum","address":"0xabc123testaddress"},
+      "beneficiary":{"name":"Bob Doe","relation":"son","contact":"bob@example.com"},
+      "conditions":["death_confirmed"],
+      "notes":"Transfer all ETH holdings"
+    },
+    {
+      "id":"b3",
+      "type":"online_account",
+      "target":{"service":"example-mail","account_id":"john.doe@example.com"},
+      "beneficiary":{"name":"Executor","relation":"executor","contact":"contact@acmefid.com"},
+      "conditions":["death_confirmed"],
+      "notes":"Archive emails, then close account per instructions"
+    }
+  ],
+  "instructions":"Pay outstanding debts of digital services from estate; preserve photos for 2 years."
+}
